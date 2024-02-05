@@ -11,8 +11,10 @@ export default function LogIn() {
   const cont = useContext(context)
   const {changeChain,chain} = cont
   changeChain()
-  window.ethereum.on('accountsChanged', changeChain);
-  window.ethereum.on('chainChanged', changeChain);
+  if(ethereum!=undefined){
+    window.ethereum.on('accountsChanged', changeChain);
+    window.ethereum.on('chainChanged', changeChain);
+  }
   const con = async () => {
     changeChain()
     try {
@@ -53,7 +55,7 @@ export default function LogIn() {
         src="/logo.jpg"
         alt="logo"
       />
-      <div className="h-[200px] w-[300px] m-auto text-center flex flex-col justify-center">
+      <div className="h-[300px] w-[300px] m-auto text-center flex flex-col justify-center">
         <p className="h-[50px] w-[130px] m-auto font-extrabold text-slate-200 text-5xl ">
           Login
         </p>
